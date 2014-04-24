@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		68BB0EAE190930BA000CAB33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EAD190930BA000CAB33 /* Foundation.framework */; };
+		68BB0EB0190930BA000CAB33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EAF190930BA000CAB33 /* CoreGraphics.framework */; };
+		68BB0EB2190930BA000CAB33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EB1190930BA000CAB33 /* UIKit.framework */; };
+		68BB0EB8190930BA000CAB33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0EB6190930BA000CAB33 /* InfoPlist.strings */; };
+		68BB0EBA190930BA000CAB33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB0EB9190930BA000CAB33 /* main.m */; };
+		68BB0EBE190930BA000CAB33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB0EBD190930BA000CAB33 /* AppDelegate.m */; };
+		68BB0EC0190930BA000CAB33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0EBF190930BA000CAB33 /* Images.xcassets */; };
+		68BB0EC7190930BA000CAB33 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EC6190930BA000CAB33 /* XCTest.framework */; };
+		68BB0EC8190930BA000CAB33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EAD190930BA000CAB33 /* Foundation.framework */; };
+		68BB0EC9190930BA000CAB33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EB1190930BA000CAB33 /* UIKit.framework */; };
+		68BB0ED1190930BA000CAB33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0ECF190930BA000CAB33 /* InfoPlist.strings */; };
+		68BB0ED3190930BA000CAB33 /* PiaxStudioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB0ED2190930BA000CAB33 /* PiaxStudioTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		68BB0ECA190930BA000CAB33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68BB0EA2190930BA000CAB33 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68BB0EA9190930BA000CAB33;
+			remoteInfo = PiaxStudio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		68BB0EAA190930BA000CAB33 /* PiaxStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiaxStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68BB0EAD190930BA000CAB33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		68BB0EAF190930BA000CAB33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		68BB0EB1190930BA000CAB33 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		68BB0EB5190930BA000CAB33 /* PiaxStudio-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PiaxStudio-Info.plist"; sourceTree = "<group>"; };
+		68BB0EB7190930BA000CAB33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		68BB0EB9190930BA000CAB33 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		68BB0EBB190930BA000CAB33 /* PiaxStudio-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PiaxStudio-Prefix.pch"; sourceTree = "<group>"; };
+		68BB0EBC190930BA000CAB33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		68BB0EBD190930BA000CAB33 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		68BB0EBF190930BA000CAB33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		68BB0EC5190930BA000CAB33 /* PiaxStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PiaxStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		68BB0EC6190930BA000CAB33 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		68BB0ECE190930BA000CAB33 /* PiaxStudioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PiaxStudioTests-Info.plist"; sourceTree = "<group>"; };
+		68BB0ED0190930BA000CAB33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		68BB0ED2190930BA000CAB33 /* PiaxStudioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PiaxStudioTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		68BB0EA7190930BA000CAB33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68BB0EB0190930BA000CAB33 /* CoreGraphics.framework in Frameworks */,
+				68BB0EB2190930BA000CAB33 /* UIKit.framework in Frameworks */,
+				68BB0EAE190930BA000CAB33 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68BB0EC2190930BA000CAB33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68BB0EC7190930BA000CAB33 /* XCTest.framework in Frameworks */,
+				68BB0EC9190930BA000CAB33 /* UIKit.framework in Frameworks */,
+				68BB0EC8190930BA000CAB33 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		68BB0EA1190930BA000CAB33 = {
+			isa = PBXGroup;
+			children = (
+				68BB0EB3190930BA000CAB33 /* PiaxStudio */,
+				68BB0ECC190930BA000CAB33 /* PiaxStudioTests */,
+				68BB0EAC190930BA000CAB33 /* Frameworks */,
+				68BB0EAB190930BA000CAB33 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		68BB0EAB190930BA000CAB33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				68BB0EAA190930BA000CAB33 /* PiaxStudio.app */,
+				68BB0EC5190930BA000CAB33 /* PiaxStudioTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		68BB0EAC190930BA000CAB33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68BB0EAD190930BA000CAB33 /* Foundation.framework */,
+				68BB0EAF190930BA000CAB33 /* CoreGraphics.framework */,
+				68BB0EB1190930BA000CAB33 /* UIKit.framework */,
+				68BB0EC6190930BA000CAB33 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		68BB0EB3190930BA000CAB33 /* PiaxStudio */ = {
+			isa = PBXGroup;
+			children = (
+				68BB0EBC190930BA000CAB33 /* AppDelegate.h */,
+				68BB0EBD190930BA000CAB33 /* AppDelegate.m */,
+				68BB0EBF190930BA000CAB33 /* Images.xcassets */,
+				68BB0EB4190930BA000CAB33 /* Supporting Files */,
+			);
+			path = PiaxStudio;
+			sourceTree = "<group>";
+		};
+		68BB0EB4190930BA000CAB33 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				68BB0EB5190930BA000CAB33 /* PiaxStudio-Info.plist */,
+				68BB0EB6190930BA000CAB33 /* InfoPlist.strings */,
+				68BB0EB9190930BA000CAB33 /* main.m */,
+				68BB0EBB190930BA000CAB33 /* PiaxStudio-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		68BB0ECC190930BA000CAB33 /* PiaxStudioTests */ = {
+			isa = PBXGroup;
+			children = (
+				68BB0ED2190930BA000CAB33 /* PiaxStudioTests.m */,
+				68BB0ECD190930BA000CAB33 /* Supporting Files */,
+			);
+			path = PiaxStudioTests;
+			sourceTree = "<group>";
+		};
+		68BB0ECD190930BA000CAB33 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				68BB0ECE190930BA000CAB33 /* PiaxStudioTests-Info.plist */,
+				68BB0ECF190930BA000CAB33 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		68BB0EA9190930BA000CAB33 /* PiaxStudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68BB0ED6190930BA000CAB33 /* Build configuration list for PBXNativeTarget "PiaxStudio" */;
+			buildPhases = (
+				68BB0EA6190930BA000CAB33 /* Sources */,
+				68BB0EA7190930BA000CAB33 /* Frameworks */,
+				68BB0EA8190930BA000CAB33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PiaxStudio;
+			productName = PiaxStudio;
+			productReference = 68BB0EAA190930BA000CAB33 /* PiaxStudio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		68BB0EC4190930BA000CAB33 /* PiaxStudioTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68BB0ED9190930BA000CAB33 /* Build configuration list for PBXNativeTarget "PiaxStudioTests" */;
+			buildPhases = (
+				68BB0EC1190930BA000CAB33 /* Sources */,
+				68BB0EC2190930BA000CAB33 /* Frameworks */,
+				68BB0EC3190930BA000CAB33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68BB0ECB190930BA000CAB33 /* PBXTargetDependency */,
+			);
+			name = PiaxStudioTests;
+			productName = PiaxStudioTests;
+			productReference = 68BB0EC5190930BA000CAB33 /* PiaxStudioTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		68BB0EA2190930BA000CAB33 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Bobie Chen";
+				TargetAttributes = {
+					68BB0EC4190930BA000CAB33 = {
+						TestTargetID = 68BB0EA9190930BA000CAB33;
+					};
+				};
+			};
+			buildConfigurationList = 68BB0EA5190930BA000CAB33 /* Build configuration list for PBXProject "PiaxStudio" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 68BB0EA1190930BA000CAB33;
+			productRefGroup = 68BB0EAB190930BA000CAB33 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				68BB0EA9190930BA000CAB33 /* PiaxStudio */,
+				68BB0EC4190930BA000CAB33 /* PiaxStudioTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		68BB0EA8190930BA000CAB33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68BB0EB8190930BA000CAB33 /* InfoPlist.strings in Resources */,
+				68BB0EC0190930BA000CAB33 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68BB0EC3190930BA000CAB33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68BB0ED1190930BA000CAB33 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		68BB0EA6190930BA000CAB33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68BB0EBE190930BA000CAB33 /* AppDelegate.m in Sources */,
+				68BB0EBA190930BA000CAB33 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68BB0EC1190930BA000CAB33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68BB0ED3190930BA000CAB33 /* PiaxStudioTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68BB0ECB190930BA000CAB33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68BB0EA9190930BA000CAB33 /* PiaxStudio */;
+			targetProxy = 68BB0ECA190930BA000CAB33 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		68BB0EB6190930BA000CAB33 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68BB0EB7190930BA000CAB33 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		68BB0ECF190930BA000CAB33 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68BB0ED0190930BA000CAB33 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		68BB0ED4190930BA000CAB33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		68BB0ED5190930BA000CAB33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		68BB0ED7190930BA000CAB33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PiaxStudio/PiaxStudio-Prefix.pch";
+				INFOPLIST_FILE = "PiaxStudio/PiaxStudio-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		68BB0ED8190930BA000CAB33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PiaxStudio/PiaxStudio-Prefix.pch";
+				INFOPLIST_FILE = "PiaxStudio/PiaxStudio-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		68BB0EDA190930BA000CAB33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PiaxStudio.app/PiaxStudio";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PiaxStudio/PiaxStudio-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PiaxStudioTests/PiaxStudioTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		68BB0EDB190930BA000CAB33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PiaxStudio.app/PiaxStudio";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PiaxStudio/PiaxStudio-Prefix.pch";
+				INFOPLIST_FILE = "PiaxStudioTests/PiaxStudioTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68BB0EA5190930BA000CAB33 /* Build configuration list for PBXProject "PiaxStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68BB0ED4190930BA000CAB33 /* Debug */,
+				68BB0ED5190930BA000CAB33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68BB0ED6190930BA000CAB33 /* Build configuration list for PBXNativeTarget "PiaxStudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68BB0ED7190930BA000CAB33 /* Debug */,
+				68BB0ED8190930BA000CAB33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		68BB0ED9190930BA000CAB33 /* Build configuration list for PBXNativeTarget "PiaxStudioTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68BB0EDA190930BA000CAB33 /* Debug */,
+				68BB0EDB190930BA000CAB33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 68BB0EA2190930BA000CAB33 /* Project object */;
+}
