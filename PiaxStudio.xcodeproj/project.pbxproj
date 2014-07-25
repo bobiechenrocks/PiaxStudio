@@ -19,6 +19,13 @@
 		68BB0EC9190930BA000CAB33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EB1190930BA000CAB33 /* UIKit.framework */; };
 		68BB0ED1190930BA000CAB33 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0ECF190930BA000CAB33 /* InfoPlist.strings */; };
 		68BB0ED3190930BA000CAB33 /* PiaxStudioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB0ED2190930BA000CAB33 /* PiaxStudioTests.m */; };
+		68BB0EDD1909544D000CAB33 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0EDC1909544D000CAB33 /* Storyboard.storyboard */; };
+		68BB0EE019095485000CAB33 /* PiaMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB0EDF19095485000CAB33 /* PiaMainViewController.m */; };
+		68BB0EE319095A83000CAB33 /* piabg_1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0EE219095A83000CAB33 /* piabg_1136.png */; };
+		68BB0EE8190A3491000CAB33 /* UICommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 68BB0EE7190A3491000CAB33 /* UICommonUtility.m */; };
+		68BB0EEC190A57FD000CAB33 /* icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0EE9190A57FD000CAB33 /* icon57.png */; };
+		68BB0EED190A57FD000CAB33 /* icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0EEA190A57FD000CAB33 /* icon114.png */; };
+		68BB0EEE190A57FD000CAB33 /* icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0EEB190A57FD000CAB33 /* icon120.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +55,15 @@
 		68BB0ECE190930BA000CAB33 /* PiaxStudioTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PiaxStudioTests-Info.plist"; sourceTree = "<group>"; };
 		68BB0ED0190930BA000CAB33 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		68BB0ED2190930BA000CAB33 /* PiaxStudioTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PiaxStudioTests.m; sourceTree = "<group>"; };
+		68BB0EDC1909544D000CAB33 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
+		68BB0EDE19095485000CAB33 /* PiaMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiaMainViewController.h; sourceTree = "<group>"; };
+		68BB0EDF19095485000CAB33 /* PiaMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiaMainViewController.m; sourceTree = "<group>"; };
+		68BB0EE219095A83000CAB33 /* piabg_1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piabg_1136.png; sourceTree = "<group>"; };
+		68BB0EE6190A3491000CAB33 /* UICommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommonUtility.h; sourceTree = "<group>"; };
+		68BB0EE7190A3491000CAB33 /* UICommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommonUtility.m; sourceTree = "<group>"; };
+		68BB0EE9190A57FD000CAB33 /* icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon57.png; sourceTree = "<group>"; };
+		68BB0EEA190A57FD000CAB33 /* icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon114.png; sourceTree = "<group>"; };
+		68BB0EEB190A57FD000CAB33 /* icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				68BB0EB3190930BA000CAB33 /* PiaxStudio */,
+				68BB0EE119095A73000CAB33 /* Images */,
 				68BB0ECC190930BA000CAB33 /* PiaxStudioTests */,
 				68BB0EAC190930BA000CAB33 /* Frameworks */,
 				68BB0EAB190930BA000CAB33 /* Products */,
@@ -107,9 +124,13 @@
 		68BB0EB3190930BA000CAB33 /* PiaxStudio */ = {
 			isa = PBXGroup;
 			children = (
+				68BB0EDC1909544D000CAB33 /* Storyboard.storyboard */,
 				68BB0EBC190930BA000CAB33 /* AppDelegate.h */,
 				68BB0EBD190930BA000CAB33 /* AppDelegate.m */,
+				68BB0EDE19095485000CAB33 /* PiaMainViewController.h */,
+				68BB0EDF19095485000CAB33 /* PiaMainViewController.m */,
 				68BB0EBF190930BA000CAB33 /* Images.xcassets */,
+				68BB0EE4190A347D000CAB33 /* Modules */,
 				68BB0EB4190930BA000CAB33 /* Supporting Files */,
 			);
 			path = PiaxStudio;
@@ -142,6 +163,35 @@
 				68BB0ECF190930BA000CAB33 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		68BB0EE119095A73000CAB33 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				68BB0EE9190A57FD000CAB33 /* icon57.png */,
+				68BB0EEA190A57FD000CAB33 /* icon114.png */,
+				68BB0EEB190A57FD000CAB33 /* icon120.png */,
+				68BB0EE219095A83000CAB33 /* piabg_1136.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		68BB0EE4190A347D000CAB33 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				68BB0EE5190A3491000CAB33 /* Common */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		68BB0EE5190A3491000CAB33 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				68BB0EE6190A3491000CAB33 /* UICommonUtility.h */,
+				68BB0EE7190A3491000CAB33 /* UICommonUtility.m */,
+			);
+			name = Common;
+			path = Modules/Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +241,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Bobie Chen";
 				TargetAttributes = {
+					68BB0EA9190930BA000CAB33 = {
+						DevelopmentTeam = 2VV4MEPG3B;
+					};
 					68BB0EC4190930BA000CAB33 = {
 						TestTargetID = 68BB0EA9190930BA000CAB33;
 					};
@@ -221,6 +274,11 @@
 			files = (
 				68BB0EB8190930BA000CAB33 /* InfoPlist.strings in Resources */,
 				68BB0EC0190930BA000CAB33 /* Images.xcassets in Resources */,
+				68BB0EE319095A83000CAB33 /* piabg_1136.png in Resources */,
+				68BB0EEE190A57FD000CAB33 /* icon120.png in Resources */,
+				68BB0EDD1909544D000CAB33 /* Storyboard.storyboard in Resources */,
+				68BB0EEC190A57FD000CAB33 /* icon57.png in Resources */,
+				68BB0EED190A57FD000CAB33 /* icon114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +299,8 @@
 			files = (
 				68BB0EBE190930BA000CAB33 /* AppDelegate.m in Sources */,
 				68BB0EBA190930BA000CAB33 /* main.m in Sources */,
+				68BB0EE019095485000CAB33 /* PiaMainViewController.m in Sources */,
+				68BB0EE8190A3491000CAB33 /* UICommonUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,12 +417,14 @@
 		68BB0ED7190930BA000CAB33 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PiaxStudio/PiaxStudio-Prefix.pch";
 				INFOPLIST_FILE = "PiaxStudio/PiaxStudio-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -370,12 +432,14 @@
 		68BB0ED8190930BA000CAB33 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PiaxStudio/PiaxStudio-Prefix.pch";
 				INFOPLIST_FILE = "PiaxStudio/PiaxStudio-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
