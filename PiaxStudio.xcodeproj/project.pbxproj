@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682827D619830D6800FC31DD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682827D519830D6800FC31DD /* Parse.framework */; };
+		682827D819830D9800FC31DD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682827D719830D9700FC31DD /* MobileCoreServices.framework */; };
+		682827DA19830DA200FC31DD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682827D919830DA200FC31DD /* SystemConfiguration.framework */; };
 		68BB0EAE190930BA000CAB33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EAD190930BA000CAB33 /* Foundation.framework */; };
 		68BB0EB0190930BA000CAB33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EAF190930BA000CAB33 /* CoreGraphics.framework */; };
 		68BB0EB2190930BA000CAB33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EB1190930BA000CAB33 /* UIKit.framework */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		682827D519830D6800FC31DD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ParseSDK/Parse.framework; sourceTree = "<group>"; };
+		682827D719830D9700FC31DD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		682827D919830DA200FC31DD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		68BB0EAA190930BA000CAB33 /* PiaxStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiaxStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BB0EAD190930BA000CAB33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68BB0EAF190930BA000CAB33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -71,8 +77,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				682827DA19830DA200FC31DD /* SystemConfiguration.framework in Frameworks */,
+				682827D819830D9800FC31DD /* MobileCoreServices.framework in Frameworks */,
 				68BB0EB0190930BA000CAB33 /* CoreGraphics.framework in Frameworks */,
 				68BB0EB2190930BA000CAB33 /* UIKit.framework in Frameworks */,
+				682827D619830D6800FC31DD /* Parse.framework in Frameworks */,
 				68BB0EAE190930BA000CAB33 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +122,9 @@
 		68BB0EAC190930BA000CAB33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				682827D919830DA200FC31DD /* SystemConfiguration.framework */,
+				682827D719830D9700FC31DD /* MobileCoreServices.framework */,
+				682827D519830D6800FC31DD /* Parse.framework */,
 				68BB0EAD190930BA000CAB33 /* Foundation.framework */,
 				68BB0EAF190930BA000CAB33 /* CoreGraphics.framework */,
 				68BB0EB1190930BA000CAB33 /* UIKit.framework */,
@@ -420,6 +432,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ParseSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PiaxStudio/PiaxStudio-Prefix.pch";
 				INFOPLIST_FILE = "PiaxStudio/PiaxStudio-Info.plist";
@@ -435,6 +451,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ParseSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PiaxStudio/PiaxStudio-Prefix.pch";
 				INFOPLIST_FILE = "PiaxStudio/PiaxStudio-Info.plist";
@@ -503,6 +523,7 @@
 				68BB0ED8190930BA000CAB33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68BB0ED9190930BA000CAB33 /* Build configuration list for PBXNativeTarget "PiaxStudioTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +532,7 @@
 				68BB0EDB190930BA000CAB33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

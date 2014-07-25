@@ -7,15 +7,46 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    
+    /* Setting up for Parse application credentials */
+    [Parse setApplicationId:@"fpRo2d0VRepB6G9M2z0sgg0J1eAqVwy7bVrwZWJN"
+                  clientKey:@"wxumsaXcSSeV9fQfEZjyj3Ml0bXyw8iI8G6tmZsK"];
+    
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
+                                                    UIRemoteNotificationTypeAlert|
+                                                    UIRemoteNotificationTypeSound];
+    
     return YES;
 }
 
+#pragma mark - remote notification registration delegate methods
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation addUniqueObject:@"PiaFans" forKey:@"channels"];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"registration failed");
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"walkie talkie");
+}
+
+#pragma mark - application life cycle management
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
