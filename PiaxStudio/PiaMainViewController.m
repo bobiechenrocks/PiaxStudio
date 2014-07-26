@@ -8,6 +8,8 @@
 
 #import "PiaMainViewController.h"
 #import "UICommonUtility.h"
+#import "PiaNavController.h"
+#import "PiaNewsViewController.h"
 
 @interface PiaMainViewController ()
 
@@ -147,6 +149,7 @@
                                                                       fNewsBaseBtnSize, fNewsBaseBtnSize)];
     [self.view addSubview:buttonNews];
     [buttonNews setBackgroundColor:[UICommonUtility hexToColor:0x48A7AA withAlpha:[NSNumber numberWithFloat:1.0f]]];
+    [buttonNews addTarget:self action:@selector(btnNewsClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     UILabel* labelBigN = [[UILabel alloc] initWithFrame:CGRectZero];
     [buttonNews addSubview:labelBigN];
@@ -219,6 +222,14 @@
         frame.origin.y = self.view.frame.size.height - fNewsTitleMarginFromBottom3;
         self.labelNews3.frame = frame;
     }
+}
+
+#pragma mark - button functions
+- (IBAction)btnNewsClicked:(id)sender
+{
+    PiaNewsViewController* newsVC = [[PiaNewsViewController alloc] init];
+    PiaNavController* navController = [[PiaNavController alloc] initWithRootViewController:newsVC];
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
 @end
