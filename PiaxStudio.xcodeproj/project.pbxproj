@@ -29,8 +29,9 @@
 		68BB0EEC190A57FD000CAB33 /* icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0EE9190A57FD000CAB33 /* icon57.png */; };
 		68BB0EED190A57FD000CAB33 /* icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0EEA190A57FD000CAB33 /* icon114.png */; };
 		68BB0EEE190A57FD000CAB33 /* icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 68BB0EEB190A57FD000CAB33 /* icon120.png */; };
-		68E5A71C1983863C0014CA4C /* PiaNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E5A71B1983863C0014CA4C /* PiaNewsViewController.m */; };
 		68E5A71F198388DE0014CA4C /* PiaNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E5A71E198388DE0014CA4C /* PiaNavController.m */; };
+		68E5A72319838F840014CA4C /* PiaNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E5A72219838F840014CA4C /* PiaNewsViewController.m */; };
+		68E5A72619838FAB0014CA4C /* PiaNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E5A72519838FAB0014CA4C /* PiaNewsCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,10 +73,12 @@
 		68BB0EE9190A57FD000CAB33 /* icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon57.png; sourceTree = "<group>"; };
 		68BB0EEA190A57FD000CAB33 /* icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon114.png; sourceTree = "<group>"; };
 		68BB0EEB190A57FD000CAB33 /* icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120.png; sourceTree = "<group>"; };
-		68E5A71A1983863C0014CA4C /* PiaNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiaNewsViewController.h; sourceTree = "<group>"; };
-		68E5A71B1983863C0014CA4C /* PiaNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiaNewsViewController.m; sourceTree = "<group>"; };
 		68E5A71D198388DE0014CA4C /* PiaNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiaNavController.h; sourceTree = "<group>"; };
 		68E5A71E198388DE0014CA4C /* PiaNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiaNavController.m; sourceTree = "<group>"; };
+		68E5A72119838F840014CA4C /* PiaNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PiaNewsViewController.h; path = Modules/News/PiaNewsViewController.h; sourceTree = "<group>"; };
+		68E5A72219838F840014CA4C /* PiaNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PiaNewsViewController.m; path = Modules/News/PiaNewsViewController.m; sourceTree = "<group>"; };
+		68E5A72419838FAB0014CA4C /* PiaNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PiaNewsCell.h; path = Modules/News/PiaNewsCell.h; sourceTree = "<group>"; };
+		68E5A72519838FAB0014CA4C /* PiaNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PiaNewsCell.m; path = Modules/News/PiaNewsCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +152,6 @@
 				68E5A71E198388DE0014CA4C /* PiaNavController.m */,
 				68BB0EDE19095485000CAB33 /* PiaMainViewController.h */,
 				68BB0EDF19095485000CAB33 /* PiaMainViewController.m */,
-				68E5A71A1983863C0014CA4C /* PiaNewsViewController.h */,
-				68E5A71B1983863C0014CA4C /* PiaNewsViewController.m */,
 				68BB0EBF190930BA000CAB33 /* Images.xcassets */,
 				68BB0EE4190A347D000CAB33 /* Modules */,
 				68BB0EB4190930BA000CAB33 /* Supporting Files */,
@@ -201,6 +202,7 @@
 		68BB0EE4190A347D000CAB33 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				68E5A72019838F560014CA4C /* News */,
 				68BB0EE5190A3491000CAB33 /* Common */,
 			);
 			name = Modules;
@@ -214,6 +216,17 @@
 			);
 			name = Common;
 			path = Modules/Common;
+			sourceTree = "<group>";
+		};
+		68E5A72019838F560014CA4C /* News */ = {
+			isa = PBXGroup;
+			children = (
+				68E5A72119838F840014CA4C /* PiaNewsViewController.h */,
+				68E5A72219838F840014CA4C /* PiaNewsViewController.m */,
+				68E5A72419838FAB0014CA4C /* PiaNewsCell.h */,
+				68E5A72519838FAB0014CA4C /* PiaNewsCell.m */,
+			);
+			name = News;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,8 +333,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				68E5A71F198388DE0014CA4C /* PiaNavController.m in Sources */,
+				68E5A72619838FAB0014CA4C /* PiaNewsCell.m in Sources */,
 				68BB0EBE190930BA000CAB33 /* AppDelegate.m in Sources */,
-				68E5A71C1983863C0014CA4C /* PiaNewsViewController.m in Sources */,
+				68E5A72319838F840014CA4C /* PiaNewsViewController.m in Sources */,
 				68BB0EBA190930BA000CAB33 /* main.m in Sources */,
 				68BB0EE019095485000CAB33 /* PiaMainViewController.m in Sources */,
 				68BB0EE8190A3491000CAB33 /* UICommonUtility.m in Sources */,

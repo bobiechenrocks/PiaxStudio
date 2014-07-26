@@ -9,7 +9,9 @@
 #import "PiaNewsViewController.h"
 #import "UICommonUtility.h"
 
-@interface PiaNewsViewController ()
+@interface PiaNewsViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong) UITableView* tableNews;
 
 @end
 
@@ -43,6 +45,7 @@
 
 - (void)prepareNewsView
 {
+    /* nav-bar items */
     UIButton* btnClose = [[UIButton alloc] initWithFrame:CGRectZero];
     [btnClose addTarget:self action:@selector(closeNewsView:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -61,6 +64,16 @@
     
     UIBarButtonItem* barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnClose];
     self.navigationItem.leftBarButtonItem = barButtonItem;
+    
+    
+    /* news table */
+    if (!self.tableNews)
+    {
+        self.tableNews = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height - 64.0f)];
+        [self.view addSubview:self.tableNews];
+    }
+    
+    [self.tableNews setBackgroundColor:[UIColor lightGrayColor]];
 }
 
 #pragma mark - button functions
