@@ -107,6 +107,7 @@
             else if (arrayNews)
             {
                 self.arrayNews = [arrayNews copy];
+                [[NSUserDefaults standardUserDefaults] setObject:self.arrayNews forKey:@"PiaxStudioNewsList"];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableNews reloadData];
                 });
