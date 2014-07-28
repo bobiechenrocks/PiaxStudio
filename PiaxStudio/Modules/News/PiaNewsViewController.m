@@ -71,11 +71,16 @@
     self.navigationItem.leftBarButtonItem = barButtonItem;
     
     
+    [self.view setBackgroundColor:[UICommonUtility hexToColor:0xF3F0E0 withAlpha:[NSNumber numberWithFloat:1.0f]]];
+    
     /* news table */
     if (!self.tableNews)
     {
         self.tableNews = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height - 64.0f)];
         [self.view addSubview:self.tableNews];
+        
+        [self.tableNews setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [self.tableNews setBackgroundColor:[UICommonUtility hexToColor:0xF3F0E0 withAlpha:[NSNumber numberWithFloat:1.0f]]];
         
         self.tableNews.dataSource = self;
         self.tableNews.delegate = self;
@@ -208,6 +213,14 @@
     {
         newsCell = [[PiaNewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:stringCellIdentifier];
     }
+    
+    NSDictionary* dictNews = [self.arrayNews objectAtIndex:[indexPath row]];
+    NSString* stringTitle = [dictNews objectForKey:@"title"];
+    if (!stringTitle) stringTitle = @"";
+    NSString* stringDate = [dictNews objectForKey:@"date"];
+    if (!stringDate) stringDate = @"";
+    
+    [newsCell prepareNewsCellWithTitle:stringTitle andDate:stringDate first:([indexPath row] == 0) last:YES];
     
     return newsCell;
 }

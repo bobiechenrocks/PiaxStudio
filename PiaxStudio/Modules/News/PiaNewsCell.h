@@ -10,4 +10,6 @@
 
 @interface PiaNewsCell : UITableViewCell
 
+- (void)prepareNewsCellWithTitle:(NSString*)stringTitle andDate:(NSString*)stringDate first:(BOOL)bFirst last:(BOOL)bLast;
+
 @end
