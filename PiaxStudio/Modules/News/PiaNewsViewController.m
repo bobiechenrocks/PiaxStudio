@@ -8,10 +8,15 @@
 
 #import "PiaNewsViewController.h"
 #import "UICommonUtility.h"
+#import "PiaNewsCell.h"
 
 @interface PiaNewsViewController () <UITableViewDataSource, UITableViewDelegate>
 
+/* UI elements */
 @property (strong) UITableView* tableNews;
+
+/* controls */
+@property (strong) NSMutableArray* arrayNews;
 
 @end
 
@@ -71,15 +76,144 @@
     {
         self.tableNews = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height - 64.0f)];
         [self.view addSubview:self.tableNews];
+        
+        self.tableNews.dataSource = self;
+        self.tableNews.delegate = self;
     }
     
-    [self.tableNews setBackgroundColor:[UIColor lightGrayColor]];
+    [self loadNewsFromPiaxStudio];
+}
+
+- (void)loadNewsFromPiaxStudio
+{
+    /*
+        check if cached news exists. if available, load it into table; otherwise start fetching
+     */
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"PiaxStudioNewsList"])
+    {
+        self.arrayNews = [[[NSUserDefaults standardUserDefaults] objectForKey:@"PiaxStudioNewsList"] mutableCopy];
+        
+        [self.tableNews reloadData];
+    }
+    else
+    {
+        [self _fetchingNewsWithCompletionHandler:^(NSMutableArray* arrayNews, NSError* error) {
+            
+            if (error)
+            {
+                /* show message on tableview to indicate something wrong */
+            }
+            else if (arrayNews)
+            {
+                self.arrayNews = [arrayNews copy];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableNews reloadData];
+                });
+            }
+            
+        }];
+    }
+}
+
+- (void)_fetchingNewsWithCompletionHandler:(void (^)(NSMutableArray*, NSError*))completion
+{
+    NSString* stringNewsAPI = @"http://piaxstudio.com/mobile/news/list";
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:stringNewsAPI]];
+    NSOperationQueue* q = [[NSOperationQueue alloc] init];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:q completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        if (connectionError)
+        {
+            NSLog(@"_fetchingNewsWithCompletionHandler connectionError: %@", [connectionError localizedDescription]);
+            
+            if (completion)
+            {
+                completion(nil, connectionError);
+            }
+        }
+        else if (data)
+        {
+            NSDictionary* dictResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+            
+            NSMutableArray* arrayNewsResults = [NSMutableArray arrayWithCapacity:0];
+            
+            NSError* error = nil;
+            NSDictionary* dictResult = [dictResponse objectForKey:@"result"];
+            if (dictResult)
+            {
+                NSArray* arrayData = [dictResult objectForKey:@"data"];
+                if (arrayData)
+                {
+                    for (NSDictionary* dictNews in arrayData)
+                    {
+                        [arrayNewsResults addObject:dictNews];
+                    }
+                }
+                else
+                {
+                    error = [NSError errorWithDomain:@"nil response data key: result" code:100 userInfo:nil];
+                }
+            }
+            else
+            {
+                error = [NSError errorWithDomain:@"nil response data key: data" code:100 userInfo:nil];
+            }
+            
+            if (completion)
+            {
+                completion(arrayNewsResults, error);
+            }
+        }
+        else
+        {
+            NSLog(@"_fetchingNewsWithCompletionHandler nil response data");
+            NSError* error = [NSError errorWithDomain:@"nil response data" code:100 userInfo:nil];
+            completion(nil, error);
+        }
+    }];
 }
 
 #pragma mark - button functions
 - (IBAction)closeNewsView:(id)sender
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - table view data-source & delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if ([self.arrayNews count] > 0)
+    {
+        return [self.arrayNews count];
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString* stringCellIdentifier = @"PiaNewsCell";
+    PiaNewsCell* newsCell = (PiaNewsCell*)[tableView dequeueReusableCellWithIdentifier:stringCellIdentifier];
+    if (!newsCell)
+    {
+        newsCell = [[PiaNewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:stringCellIdentifier];
+    }
+    
+    return newsCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.0f;
 }
 
 @end
