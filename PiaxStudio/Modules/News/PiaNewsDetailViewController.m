@@ -9,7 +9,7 @@
 #import "PiaNewsDetailViewController.h"
 #import "UICommonUtility.h"
 
-@interface PiaNewsDetailViewController ()
+@interface PiaNewsDetailViewController () <UIGestureRecognizerDelegate>
 
 /* UI elements */
 @property (strong) UIScrollView* baseScroll;
@@ -59,6 +59,15 @@
     self.navigationItem.leftBarButtonItem = barButtonItem;
     
     [self.view setBackgroundColor:[UICommonUtility hexToColor:0xF9F9E9 withAlpha:[NSNumber numberWithFloat:1.0f]]];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)])
+    {
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -323,6 +332,12 @@
 - (IBAction)backToNewsList:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return YES;
 }
 
 @end
