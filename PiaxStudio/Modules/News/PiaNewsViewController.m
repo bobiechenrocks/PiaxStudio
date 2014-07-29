@@ -9,6 +9,7 @@
 #import "PiaNewsViewController.h"
 #import "UICommonUtility.h"
 #import "PiaNewsCell.h"
+#import "PiaNewsDetailViewController.h"
 
 @interface PiaNewsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -71,7 +72,7 @@
     self.navigationItem.leftBarButtonItem = barButtonItem;
     
     
-    [self.view setBackgroundColor:[UICommonUtility hexToColor:0xF3F0E0 withAlpha:[NSNumber numberWithFloat:1.0f]]];
+    [self.view setBackgroundColor:[UICommonUtility hexToColor:0xF9F9E9 withAlpha:[NSNumber numberWithFloat:1.0f]]];
     
     /* news table */
     if (!self.tableNews)
@@ -80,7 +81,7 @@
         [self.view addSubview:self.tableNews];
         
         [self.tableNews setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-        [self.tableNews setBackgroundColor:[UICommonUtility hexToColor:0xF3F0E0 withAlpha:[NSNumber numberWithFloat:1.0f]]];
+        [self.tableNews setBackgroundColor:[UICommonUtility hexToColor:0xF9F9E9 withAlpha:[NSNumber numberWithFloat:1.0f]]];
         
         self.tableNews.dataSource = self;
         self.tableNews.delegate = self;
@@ -228,6 +229,18 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 44.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary* dictNews = [self.arrayNews objectAtIndex:[indexPath row]];
+    if (dictNews)
+    {
+        /* news detail view */
+        PiaNewsDetailViewController* newsDetailVC = [[PiaNewsDetailViewController alloc] init];
+        [newsDetailVC prepareNewsDetailViewWithData:dictNews];
+        [self.navigationController pushViewController:newsDetailVC animated:YES];
+    }
 }
 
 @end

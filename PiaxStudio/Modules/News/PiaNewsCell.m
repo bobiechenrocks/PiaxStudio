@@ -34,7 +34,7 @@
         frame.size.height = 44.0f;
         self.contentView.frame = frame;
         
-        [self.contentView setBackgroundColor:[UICommonUtility hexToColor:0xF3F0E0 withAlpha:[NSNumber numberWithFloat:1.0f]]];
+        [self.contentView setBackgroundColor:[UICommonUtility hexToColor:0xF9F9E9 withAlpha:[NSNumber numberWithFloat:1.0f]]];
     }
     return self;
 }

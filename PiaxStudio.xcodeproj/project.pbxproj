@@ -10,6 +10,7 @@
 		682827D619830D6800FC31DD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682827D519830D6800FC31DD /* Parse.framework */; };
 		682827D819830D9800FC31DD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682827D719830D9700FC31DD /* MobileCoreServices.framework */; };
 		682827DA19830DA200FC31DD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682827D919830DA200FC31DD /* SystemConfiguration.framework */; };
+		682A286B198769DD00027964 /* PiaNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682A286A198769DD00027964 /* PiaNewsDetailViewController.m */; };
 		68BB0EAE190930BA000CAB33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EAD190930BA000CAB33 /* Foundation.framework */; };
 		68BB0EB0190930BA000CAB33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EAF190930BA000CAB33 /* CoreGraphics.framework */; };
 		68BB0EB2190930BA000CAB33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EB1190930BA000CAB33 /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 		682827D519830D6800FC31DD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ParseSDK/Parse.framework; sourceTree = "<group>"; };
 		682827D719830D9700FC31DD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		682827D919830DA200FC31DD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		682A2869198769DD00027964 /* PiaNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PiaNewsDetailViewController.h; path = Modules/News/PiaNewsDetailViewController.h; sourceTree = "<group>"; };
+		682A286A198769DD00027964 /* PiaNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PiaNewsDetailViewController.m; path = Modules/News/PiaNewsDetailViewController.m; sourceTree = "<group>"; };
 		68BB0EAA190930BA000CAB33 /* PiaxStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiaxStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BB0EAD190930BA000CAB33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68BB0EAF190930BA000CAB33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -225,6 +228,8 @@
 				68E5A72219838F840014CA4C /* PiaNewsViewController.m */,
 				68E5A72419838FAB0014CA4C /* PiaNewsCell.h */,
 				68E5A72519838FAB0014CA4C /* PiaNewsCell.m */,
+				682A2869198769DD00027964 /* PiaNewsDetailViewController.h */,
+				682A286A198769DD00027964 /* PiaNewsDetailViewController.m */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68E5A71F198388DE0014CA4C /* PiaNavController.m in Sources */,
+				682A286B198769DD00027964 /* PiaNewsDetailViewController.m in Sources */,
 				68E5A72619838FAB0014CA4C /* PiaNewsCell.m in Sources */,
 				68BB0EBE190930BA000CAB33 /* AppDelegate.m in Sources */,
 				68E5A72319838F840014CA4C /* PiaNewsViewController.m in Sources */,
