@@ -15,6 +15,7 @@
 
 /* UI elements */
 @property (strong) UITableView* tableNews;
+@property (strong) UILabel* labelLastUpdate;
 
 /* controls */
 @property (strong) NSMutableArray* arrayNews;
@@ -68,16 +69,50 @@
     frame.size.height = labelClose.frame.size.height;
     btnClose.frame = frame;
     
-    UIBarButtonItem* barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btnClose];
-    self.navigationItem.leftBarButtonItem = barButtonItem;
+    UIBarButtonItem* barButtonItemLeft = [[UIBarButtonItem alloc] initWithCustomView:btnClose];
+    self.navigationItem.leftBarButtonItem = barButtonItemLeft;
     
+    UIButton* btnRefresh = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 44.0f, 44.0f)];
+    [btnRefresh setImage:[UIImage imageNamed:@"refresh_up.png"] forState:UIControlStateNormal];
+    [btnRefresh setImage:[UIImage imageNamed:@"refresh_down.png"] forState:UIControlStateHighlighted];
+    [btnRefresh addTarget:self action:@selector(refreshNewsList:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* barButtonItemRight = [[UIBarButtonItem alloc] initWithCustomView:btnRefresh];
+    self.navigationItem.rightBarButtonItem = barButtonItemRight;
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
     
     [self.view setBackgroundColor:[UICommonUtility hexToColor:0xF9F9E9 withAlpha:[NSNumber numberWithFloat:1.0f]]];
+    
+    CGFloat fLastUpdateViewHeight = 32.0f;
+    CGFloat fStatusNavBarHeight = ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f)? 64.0f : 44.0f;
+    /* last-update time label */
+    if (!self.labelLastUpdate)
+    {
+        self.labelLastUpdate = [[UILabel alloc] initWithFrame:CGRectZero];
+        [self.view addSubview:self.labelLastUpdate];
+        
+        [self.labelLastUpdate setBackgroundColor:[UIColor clearColor]];
+        [self.labelLastUpdate setFont:[UIFont systemFontOfSize:12.0f]];
+        [self.labelLastUpdate setTextColor:[UIColor lightGrayColor]];
+    }
+    
+    NSString* stringLastUpdate = [[NSUserDefaults standardUserDefaults] objectForKey:@"PiaxStudioNewsLastUpdate"];
+    if (!stringLastUpdate || [stringLastUpdate isEqualToString:@""])
+    {
+        stringLastUpdate = @"尚未更新";
+    }
+    [self.labelLastUpdate setText:stringLastUpdate];
+    [self.labelLastUpdate sizeToFit];
+    
+    frame = self.labelLastUpdate.frame;
+    frame.origin.x = (self.view.frame.size.width - frame.size.width)/2;
+    frame.origin.y = self.view.frame.size.height - fStatusNavBarHeight - fLastUpdateViewHeight + (fLastUpdateViewHeight - frame.size.height)/2;
+    self.labelLastUpdate.frame = frame;
     
     /* news table */
     if (!self.tableNews)
     {
-        self.tableNews = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height - 64.0f)];
+        self.tableNews = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height - fStatusNavBarHeight - fLastUpdateViewHeight)];
         [self.view addSubview:self.tableNews];
         
         [self.tableNews setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -87,6 +122,7 @@
         self.tableNews.delegate = self;
     }
     
+    /* load the table */
     [self loadNewsFromPiaxStudio];
 }
 
@@ -157,6 +193,21 @@
                     {
                         [arrayNewsResults addObject:dictNews];
                     }
+                    
+                    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+                    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+                    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+                    NSString* stringLastUpdate = [NSString stringWithFormat:@"最後更新: %@", [formatter stringFromDate:[NSDate date]]];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [self.labelLastUpdate setText:stringLastUpdate];
+                        CGRect frame = self.labelLastUpdate.frame;
+                        frame.origin.x = (self.view.frame.size.width - frame.size.width)/2;
+                        self.labelLastUpdate.frame = frame;
+                        
+                    });
+                    
+                    [[NSUserDefaults standardUserDefaults] setObject:stringLastUpdate forKey:@"PiaxStudioNewsLastUpdate"];
                 }
                 else
                 {
@@ -186,6 +237,26 @@
 - (IBAction)closeNewsView:(id)sender
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)refreshNewsList:(id)sender
+{
+    [self _fetchingNewsWithCompletionHandler:^(NSMutableArray* arrayNews, NSError* error) {
+        
+        if (error)
+        {
+            /* show message on tableview to indicate something wrong */
+        }
+        else if (arrayNews)
+        {
+            self.arrayNews = [arrayNews copy];
+            [[NSUserDefaults standardUserDefaults] setObject:self.arrayNews forKey:@"PiaxStudioNewsList"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableNews reloadData];
+            });
+        }
+        
+    }];
 }
 
 #pragma mark - table view data-source & delegate

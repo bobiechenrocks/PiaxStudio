@@ -11,6 +11,8 @@
 		682827D819830D9800FC31DD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682827D719830D9700FC31DD /* MobileCoreServices.framework */; };
 		682827DA19830DA200FC31DD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 682827D919830DA200FC31DD /* SystemConfiguration.framework */; };
 		682A286B198769DD00027964 /* PiaNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 682A286A198769DD00027964 /* PiaNewsDetailViewController.m */; };
+		682A286E19884ABA00027964 /* refresh_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 682A286C19884AB900027964 /* refresh_down.png */; };
+		682A286F19884ABA00027964 /* refresh_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 682A286D19884AB900027964 /* refresh_up.png */; };
 		68BB0EAE190930BA000CAB33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EAD190930BA000CAB33 /* Foundation.framework */; };
 		68BB0EB0190930BA000CAB33 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EAF190930BA000CAB33 /* CoreGraphics.framework */; };
 		68BB0EB2190930BA000CAB33 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BB0EB1190930BA000CAB33 /* UIKit.framework */; };
@@ -51,6 +53,8 @@
 		682827D919830DA200FC31DD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		682A2869198769DD00027964 /* PiaNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PiaNewsDetailViewController.h; path = Modules/News/PiaNewsDetailViewController.h; sourceTree = "<group>"; };
 		682A286A198769DD00027964 /* PiaNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PiaNewsDetailViewController.m; path = Modules/News/PiaNewsDetailViewController.m; sourceTree = "<group>"; };
+		682A286C19884AB900027964 /* refresh_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = refresh_down.png; path = PiaxStudio/Images/refresh_down.png; sourceTree = "<group>"; };
+		682A286D19884AB900027964 /* refresh_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = refresh_up.png; path = PiaxStudio/Images/refresh_up.png; sourceTree = "<group>"; };
 		68BB0EAA190930BA000CAB33 /* PiaxStudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiaxStudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BB0EAD190930BA000CAB33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68BB0EAF190930BA000CAB33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -198,6 +202,8 @@
 				68BB0EEA190A57FD000CAB33 /* icon114.png */,
 				68BB0EEB190A57FD000CAB33 /* icon120.png */,
 				68BB0EE219095A83000CAB33 /* piabg_1136.png */,
+				682A286C19884AB900027964 /* refresh_down.png */,
+				682A286D19884AB900027964 /* refresh_up.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -313,6 +319,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				68BB0EB8190930BA000CAB33 /* InfoPlist.strings in Resources */,
+				682A286F19884ABA00027964 /* refresh_up.png in Resources */,
+				682A286E19884ABA00027964 /* refresh_down.png in Resources */,
 				68BB0EC0190930BA000CAB33 /* Images.xcassets in Resources */,
 				68BB0EE319095A83000CAB33 /* piabg_1136.png in Resources */,
 				68BB0EEE190A57FD000CAB33 /* icon120.png in Resources */,
