@@ -301,6 +301,12 @@
         
         [self.textContents setText:stringContents];
         [self.textContents sizeToFit];
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0f)
+        {
+            CGRect frame = self.textContents.frame;
+            frame.size.height = self.textContents.contentSize.height;
+            self.textContents.frame = frame;
+        }
 
         CGFloat fContentHeight = self.textContents.frame.origin.y + self.textContents.frame.size.height + 5.0f;
         [self.baseScroll setContentSize:CGSizeMake(self.baseScroll.frame.size.width, fContentHeight)];
