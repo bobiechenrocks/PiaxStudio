@@ -16,7 +16,7 @@
 @property (strong) UIImageView* imageNewsPhoto;
 @property (strong) UILabel* labelTitle;
 @property (strong) UILabel* labelDate;
-@property (strong) UILabel* labelContents;
+@property (strong) UITextView* textContents;
 
 @end
 
@@ -109,8 +109,8 @@
             [self.baseScroll addSubview:self.labelTitle];
             
             [self.labelTitle setBackgroundColor:[UIColor clearColor]];
-            [self.labelTitle setFont:[UIFont fontWithName:@"STHeitiTC-Light" size:15.0f]];
-            [self.labelTitle setTextColor:[UICommonUtility hexToColor:0x909090 withAlpha:[NSNumber numberWithFloat:1.0f]]];
+            [self.labelTitle setFont:[UIFont fontWithName:@"STHeitiTC-Medium" size:15.0f]];
+            [self.labelTitle setTextColor:[UICommonUtility hexToColor:0x707070 withAlpha:[NSNumber numberWithFloat:1.0f]]];
             [self.labelTitle setNumberOfLines:0.0];
         }
         
@@ -157,15 +157,18 @@
     NSString* stringNewsId = [dictNews objectForKey:@"id"];
     if (stringNewsId && ![stringNewsId isEqualToString:@""])
     {
-        if (!self.labelContents)
+        if (!self.textContents)
         {
-            self.labelContents = [[UILabel alloc] initWithFrame:CGRectZero];
-            [self.baseScroll addSubview:self.labelContents];
+            self.textContents = [[UITextView alloc] initWithFrame:CGRectMake(15.0f, fCurrentY, 290.0f, 0.0f)];
+            [self.baseScroll addSubview:self.textContents];
             
-            [self.labelContents setBackgroundColor:[UIColor clearColor]];
-            [self.labelContents setFont:[UIFont fontWithName:@"STHeitiTC-Light" size:12.0f]];
-            [self.labelContents setTextColor:[UICommonUtility hexToColor:0x808080 withAlpha:[NSNumber numberWithFloat:1.0f]]];
-            [self.labelContents setNumberOfLines:0.0];
+            [self.textContents setBackgroundColor:[UIColor clearColor]];
+            [self.textContents setFont:[UIFont fontWithName:@"STHeitiTC-Light" size:12.0f]];
+            [self.textContents setTextColor:[UICommonUtility hexToColor:0x707070 withAlpha:[NSNumber numberWithFloat:1.0f]]];
+            
+            [self.textContents setScrollEnabled:NO];
+            [self.textContents setDataDetectorTypes:UIDataDetectorTypeAll];
+            [self.textContents setEditable:NO];
         }
         
         [self _fetchNewsContents:stringNewsId];
@@ -213,7 +216,7 @@
     NSData *data = [stringPayload dataUsingEncoding:NSUTF8StringEncoding];
     [request addValue:@"8bit" forHTTPHeaderField:@"Content-Transfer-Encoding"];
     [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:[NSString stringWithFormat:@"%i", [data length]] forHTTPHeaderField:@"Content-Length"];
+    [request addValue:[NSString stringWithFormat:@"%d", [data length]] forHTTPHeaderField:@"Content-Length"];
     [request setHTTPBody:data];
     
     NSOperationQueue* queue = [[NSOperationQueue alloc] init];
@@ -243,23 +246,12 @@
 - (void)_updateNewsContentsAndScroll:(NSString*)stringContents
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-
-        [self.labelContents setText:stringContents];
-        CGRect frame = self.labelContents.frame;
-        frame.size.width = 290.0f;
-        self.labelContents.frame = frame;
-        [self.labelContents sizeToFit];
         
-        frame = self.labelContents.frame;
-        if (frame.size.width > 290.0f) frame.size.width = 290.0f;
-        frame.origin.x = 15.0f;
-        frame.origin.y = self.labelDate.frame.origin.y + self.labelDate.frame.size.height + 5.0f;
-        self.labelContents.frame = frame;
+        [self.textContents setText:stringContents];
+        [self.textContents sizeToFit];
 
-        CGFloat fContentHeight = self.labelContents.frame.origin.y + self.labelContents.frame.size.height + 5.0f;
+        CGFloat fContentHeight = self.textContents.frame.origin.y + self.textContents.frame.size.height + 5.0f;
         [self.baseScroll setContentSize:CGSizeMake(self.baseScroll.frame.size.width, fContentHeight)];
-        
-#warning - make contents-label URL-aware
     });
 }
 
