@@ -204,9 +204,31 @@
 
 }
 
-#warning - remember to check if content already cached
 - (void)_fetchNewsContents:(NSString*)stringNewsId
 {
+    /* use cached contents if already exists */
+    NSString* stringContents = @"";
+    NSArray* arrayNews = [[NSUserDefaults standardUserDefaults] objectForKey:@"PiaxStudioNewsList"];
+    if (arrayNews && ([arrayNews count] > 0))
+    {
+        for (NSDictionary* dictNews in arrayNews)
+        {
+            NSString* stringId = [dictNews objectForKey:@"id"];
+            if (stringId && [stringId isEqualToString:stringNewsId])
+            {
+                stringContents = [dictNews objectForKey:@"content"];
+                break;
+            }
+        }
+    }
+    
+    if (stringContents && ![stringContents isEqualToString:@""])
+    {
+        [self _updateNewsContentsAndScroll:stringContents];
+        return;
+    }
+    
+    /* fetch contents if no cache available */
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:@"http://piaxstudio.com/mobile/news/view"]];
     [request setHTTPMethod:@"POST"];
@@ -236,7 +258,28 @@
                 if (stringContents && ![stringContents isEqualToString:@""])
                 {
                     [self _updateNewsContentsAndScroll:[self _htmlFlatten:stringContents]];
-#warning - remember to update contents back to user-defaults
+                    
+                    NSMutableArray* arrayNews = [[[NSUserDefaults standardUserDefaults] objectForKey:@"PiaxStudioNewsList"] mutableCopy];
+                    BOOL bUpdated = NO;
+                    for (NSDictionary* dictNews in arrayNews)
+                    {
+                        NSString* stringId = [dictNews objectForKey:@"id"];
+                        if (stringId && [stringId isEqualToString:stringNewsId])
+                        {
+                            NSMutableDictionary* dictUpdatedNews = [dictNews mutableCopy];
+                            [dictUpdatedNews setObject:[self _htmlFlatten:stringContents] forKey:@"content"];
+                            NSInteger nIndex = [arrayNews indexOfObject:dictNews];
+                            [arrayNews replaceObjectAtIndex:nIndex withObject:dictUpdatedNews];
+                            
+                            bUpdated = YES;
+                            break;
+                        }
+                    }
+                    
+                    if (bUpdated)
+                    {
+                        [[NSUserDefaults standardUserDefaults] setObject:arrayNews forKey:@"PiaxStudioNewsList"];
+                    }
                 }
             }
         }
