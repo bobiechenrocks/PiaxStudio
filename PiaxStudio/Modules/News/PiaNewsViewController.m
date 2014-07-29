@@ -102,6 +102,9 @@
         stringLastUpdate = @"尚未更新";
     }
     [self.labelLastUpdate setText:stringLastUpdate];
+    frame = self.labelLastUpdate.frame;
+    frame.size.width = 320.0f;
+    self.labelLastUpdate.frame = frame;
     [self.labelLastUpdate sizeToFit];
     
     frame = self.labelLastUpdate.frame;
@@ -202,6 +205,11 @@
                         
                         [self.labelLastUpdate setText:stringLastUpdate];
                         CGRect frame = self.labelLastUpdate.frame;
+                        frame.size.width = 320.0f;
+                        self.labelLastUpdate.frame = frame;
+                        [self.labelLastUpdate sizeToFit];
+                        
+                        frame = self.labelLastUpdate.frame;
                         frame.origin.x = (self.view.frame.size.width - frame.size.width)/2;
                         self.labelLastUpdate.frame = frame;
                         
