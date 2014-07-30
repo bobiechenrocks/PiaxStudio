@@ -16,6 +16,9 @@
 /* UI elements */
 @property (strong) UIScrollView* newsTitleScroll;
 
+/* controls */
+@property (strong) NSTimer* newsTitleTimer;
+
 @end
 
 @implementation PiaMainViewController
@@ -259,6 +262,43 @@
     }
     
     [self.newsTitleScroll setContentSize:CGSizeMake(self.newsTitleScroll.frame.size.width, (nIndex > 0)? nIndex*fNewsBaseBtnSize:fNewsBaseBtnSize)];
+    [self _startNewsTitleTimer];
+}
+
+- (void)_startNewsTitleTimer
+{
+    if (self.newsTitleTimer)
+    {
+        [self.newsTitleTimer invalidate];
+    }
+    
+    self.newsTitleTimer = [NSTimer scheduledTimerWithTimeInterval:1.5f target:self
+                                                         selector:@selector(_autoScrollNewsTitle) userInfo:nil repeats:YES];
+}
+
+- (void)_autoScrollNewsTitle
+{
+    CGFloat fScrollContentHeight = self.newsTitleScroll.contentSize.height;
+    if (fScrollContentHeight == self.newsTitleScroll.frame.size.height)
+    {
+        return;
+    }
+    
+    CGFloat fCurrentScrollOffsetY = self.newsTitleScroll.contentOffset.y;
+    if (fCurrentScrollOffsetY >= (fScrollContentHeight - self.newsTitleScroll.frame.size.height))
+    {
+        /* last one, scroll to top */
+        CGPoint fOffset = CGPointMake(0.0f, 0.0f);
+        [self.newsTitleScroll setContentOffset:fOffset animated:YES];
+    }
+    else
+    {
+        /* scroll to next */
+        CGFloat fNewOffset = fCurrentScrollOffsetY + self.newsTitleScroll.frame.size.height;
+        CGPoint fOffset = CGPointMake(0.0f, fNewOffset);
+        [self.newsTitleScroll setContentOffset:fOffset animated:YES];
+    }
+
 }
 
 #pragma mark - button functions
