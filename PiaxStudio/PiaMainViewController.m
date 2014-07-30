@@ -38,6 +38,8 @@
     // Do any additional setup after loading the view.
     
     [self prepareMainView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateNewsTitles) name:@"PiaxStudioUpdateNewsTitles" object:nil];
 }
 
 - (void)didReceiveMemoryWarning

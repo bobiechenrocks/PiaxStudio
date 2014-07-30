@@ -244,6 +244,7 @@
 #pragma mark - button functions
 - (IBAction)closeNewsView:(id)sender
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PiaxStudioUpdateNewsTitles" object:nil];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
