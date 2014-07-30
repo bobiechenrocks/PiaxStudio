@@ -13,9 +13,8 @@
 
 @interface PiaMainViewController ()
 
-@property (strong) UILabel* labelNews1;
-@property (strong) UILabel* labelNews2;
-@property (strong) UILabel* labelNews3;
+/* UI elements */
+@property (strong) UIScrollView* newsTitleScroll;
 
 @end
 
@@ -164,64 +163,102 @@
     frame.origin.y = (fNewsBaseBtnSize - frame.size.height)/2.0f;
     labelBigN.frame = frame;
     
-    CGFloat fNewsTitleMaxWidth = 230.0f;
-    CGFloat fNewsTitleMarginLeft = 10.0f, fNewsTitleMarginFromBottom1 = 70.0f, fNewsTitleMarginFromBottom2 = 55.0f, fNewsTitleMarginFromBottom3 = 40.0f;
-    if (!self.labelNews1) {
-        self.labelNews1 = [[UILabel alloc] initWithFrame:CGRectZero];
-        [self.view addSubview:self.labelNews1];
-        [self.labelNews1 setBackgroundColor:[UIColor clearColor]];
-        [self.labelNews1 setFont:[UIFont systemFontOfSize:12.0f]];
-        [self.labelNews1 setTextColor:[UICommonUtility hexToColor:0x9C9C9C withAlpha:[NSNumber numberWithFloat:1.0f]]];
-        
-        [self.labelNews1 setText:@"沿途｜小巡演｜桃園篇"];
-        [self.labelNews1 sizeToFit];
-        
-        CGRect frame = self.labelNews1.frame;
-        if (self.labelNews1.frame.size.width > fNewsTitleMaxWidth) {
-            frame.size.width = fNewsTitleMaxWidth;
+    [self updateNewsTitles];
+}
+
+- (void)updateNewsTitles
+{
+    /* get the latest 3 news titles */
+    NSMutableArray* arrayNewsTitles = [NSMutableArray arrayWithCapacity:0];
+    
+    NSArray* arrayNews = [[NSUserDefaults standardUserDefaults] objectForKey:@"PiaxStudioNewsList"];
+    if (arrayNews && [arrayNews count] > 0)
+    {
+        NSInteger nIndex = 0;
+        NSDictionary* dictNews = [arrayNews objectAtIndex:nIndex];
+        while (nIndex < 5)
+        {
+            if (dictNews)
+            {
+                NSString* stringTitle = [dictNews objectForKey:@"title"];
+                NSString* stringId = [dictNews objectForKey:@"id"];
+                if (stringTitle && ![stringTitle isEqualToString:@""] && stringId && ![stringId isEqualToString:@""])
+                {
+                    NSDictionary* dictNewsTitleId = [NSDictionary dictionaryWithObjectsAndKeys:stringTitle, @"title", stringId, @"id", nil];
+                    [arrayNewsTitles addObject:dictNewsTitleId];
+                }
+            }
+            
+            ++nIndex;
+            if (nIndex >= [arrayNews count])
+            {
+                break;
+            }
+            
+            dictNews = [arrayNews objectAtIndex:nIndex];
         }
-        frame.origin.x = fNewsBaseBtnMarginLeft + fNewsBaseBtnSize + fNewsTitleMarginLeft;
-        frame.origin.y = self.view.frame.size.height - fNewsTitleMarginFromBottom1;
-        self.labelNews1.frame = frame;
+        
+        /* "more?" */
+        NSDictionary* dictMoreNewsTitleId = [NSDictionary dictionaryWithObjectsAndKeys:@"更多?", @"title", @"9999", @"id", nil];
+        [arrayNewsTitles addObject:dictMoreNewsTitleId];
+    }
+    else
+    {
+        NSDictionary* dictMoreNewsTitleId = [NSDictionary dictionaryWithObjectsAndKeys:@"\u2793 點擊N查看PiA最新消息", @"title", @"9999", @"id", nil];
+        [arrayNewsTitles addObject:dictMoreNewsTitleId];
     }
     
-    if (!self.labelNews2) {
-        self.labelNews2 = [[UILabel alloc] initWithFrame:CGRectZero];
-        [self.view addSubview:self.labelNews2];
-        [self.labelNews2 setBackgroundColor:[UIColor clearColor]];
-        [self.labelNews2 setFont:[UIFont systemFontOfSize:12.0f]];
-        [self.labelNews2 setTextColor:[UICommonUtility hexToColor:0x9C9C9C withAlpha:[NSNumber numberWithFloat:1.0f]]];
+    
+    CGFloat fNewsBaseBtnMarginLeft = 15.0f, fNewsBaseBtnSize = 50.0f, fNewsBaseBtnMarginFromBottom = 20.0f;;
+    CGFloat fNewsTitleMarginLeft = 10.0f, fNewsTitleMaxWidth = 230.0f;
+    if (!self.newsTitleScroll)
+    {
+        self.newsTitleScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(fNewsBaseBtnMarginLeft+fNewsBaseBtnSize+fNewsTitleMarginLeft,
+                                                                              self.view.frame.size.height - fNewsBaseBtnMarginFromBottom - fNewsBaseBtnSize,
+                                                                              fNewsTitleMaxWidth, fNewsBaseBtnSize)];
+        [self.view addSubview:self.newsTitleScroll];
         
-        [self.labelNews2 setText:@"沿途｜小巡演｜台北篇"];
-        [self.labelNews2 sizeToFit];
-        
-        CGRect frame = self.labelNews2.frame;
-        if (self.labelNews2.frame.size.width > fNewsTitleMaxWidth) {
-            frame.size.width = fNewsTitleMaxWidth;
+        [self.newsTitleScroll setPagingEnabled:YES];
+        [self.newsTitleScroll setShowsVerticalScrollIndicator:NO];
+    }
+    else
+    {
+        for (UIView* subview in self.newsTitleScroll.subviews)
+        {
+            [subview removeFromSuperview];
         }
-        frame.origin.x = fNewsBaseBtnMarginLeft + fNewsBaseBtnSize + fNewsTitleMarginLeft;
-        frame.origin.y = self.view.frame.size.height - fNewsTitleMarginFromBottom2;
-        self.labelNews2.frame = frame;
     }
     
-    if (!self.labelNews3) {
-        self.labelNews3 = [[UILabel alloc] initWithFrame:CGRectZero];
-        [self.view addSubview:self.labelNews3];
-        [self.labelNews3 setBackgroundColor:[UIColor clearColor]];
-        [self.labelNews3 setFont:[UIFont systemFontOfSize:12.0f]];
-        [self.labelNews3 setTextColor:[UICommonUtility hexToColor:0x9C9C9C withAlpha:[NSNumber numberWithFloat:1.0f]]];
+    NSInteger nIndex = 0;
+    for (NSDictionary* dictNewsTitleId in arrayNewsTitles)
+    {
+        UIButton* btnTitle = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, nIndex*self.newsTitleScroll.frame.size.height,
+                                                                        self.newsTitleScroll.frame.size.width, self.newsTitleScroll.frame.size.height)];
+        [self.newsTitleScroll addSubview:btnTitle];
+        btnTitle.tag = [[dictNewsTitleId objectForKey:@"id"] intValue];
+        [btnTitle addTarget:self action:@selector(newsTitleClicked:) forControlEvents:UIControlEventTouchUpInside];
+        ++nIndex;
         
-        [self.labelNews3 setText:@"沿途｜小巡演｜台中篇"];
-        [self.labelNews3 sizeToFit];
+        UILabel* labelTitle = [[UILabel alloc] initWithFrame:CGRectZero];
+        [btnTitle addSubview:labelTitle];
+        [labelTitle setBackgroundColor:[UIColor clearColor]];
+        [labelTitle setFont:[UIFont fontWithName:@"STHeitiTC-Light" size:17.0f]];
+        [labelTitle setTextColor:[UICommonUtility hexToColor:0x9C9C9C withAlpha:[NSNumber numberWithFloat:1.0f]]];
+        [labelTitle setNumberOfLines:2];
         
-        CGRect frame = self.labelNews3.frame;
-        if (self.labelNews3.frame.size.width > fNewsTitleMaxWidth) {
-            frame.size.width = fNewsTitleMaxWidth;
-        }
-        frame.origin.x = fNewsBaseBtnMarginLeft + fNewsBaseBtnSize + fNewsTitleMarginLeft;
-        frame.origin.y = self.view.frame.size.height - fNewsTitleMarginFromBottom3;
-        self.labelNews3.frame = frame;
+        [labelTitle setText:[dictNewsTitleId objectForKey:@"title"]];
+        CGRect frame = labelTitle.frame;
+        frame.size.width = fNewsTitleMaxWidth;
+        labelTitle.frame = frame;
+        [labelTitle sizeToFit];
+        
+        frame = labelTitle.frame;
+        frame.origin.x = (fNewsTitleMaxWidth - labelTitle.frame.size.width)/2;
+        frame.origin.y = (fNewsBaseBtnSize - labelTitle.frame.size.height)/2;
+        labelTitle.frame = frame;
     }
+    
+    [self.newsTitleScroll setContentSize:CGSizeMake(self.newsTitleScroll.frame.size.width, (nIndex > 0)? nIndex*fNewsBaseBtnSize:fNewsBaseBtnSize)];
 }
 
 #pragma mark - button functions
@@ -230,6 +267,18 @@
     PiaNewsViewController* newsVC = [[PiaNewsViewController alloc] init];
     PiaNavController* navController = [[PiaNavController alloc] initWithRootViewController:newsVC];
     [self.navigationController presentViewController:navController animated:YES completion:nil];
+}
+
+- (IBAction)newsTitleClicked:(id)sender
+{
+    /* 
+        check button tag: 9999 or normal id
+     */
+    
+    UIButton* button = (UIButton*)sender;
+    NSInteger nTag = button.tag;
+    
+    NSLog(@"%d", nTag);
 }
 
 @end
