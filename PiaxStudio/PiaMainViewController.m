@@ -210,7 +210,7 @@
     }
     else
     {
-        NSDictionary* dictMoreNewsTitleId = [NSDictionary dictionaryWithObjectsAndKeys:@"\u2793 點擊N查看PiA最新消息", @"title", @"9999", @"id", nil];
+        NSDictionary* dictMoreNewsTitleId = [NSDictionary dictionaryWithObjectsAndKeys:@"\u2190 點擊N查看PiA最新消息", @"title", @"9999", @"id", nil];
         [arrayNewsTitles addObject:dictMoreNewsTitleId];
     }
     
@@ -275,7 +275,7 @@
         [self.newsTitleTimer invalidate];
     }
     
-    self.newsTitleTimer = [NSTimer scheduledTimerWithTimeInterval:1.5f target:self
+    self.newsTitleTimer = [NSTimer scheduledTimerWithTimeInterval:2.5f target:self
                                                          selector:@selector(_autoScrollNewsTitle) userInfo:nil repeats:YES];
 }
 
