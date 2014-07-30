@@ -10,6 +10,7 @@
 #import "UICommonUtility.h"
 #import "PiaNavController.h"
 #import "PiaNewsViewController.h"
+#import "PiaNewsDetailViewController.h"
 
 @interface PiaMainViewController ()
 
@@ -320,7 +321,35 @@
     UIButton* button = (UIButton*)sender;
     NSInteger nTag = button.tag;
     
-    NSLog(@"%d", nTag);
+    if (nTag == 9999)
+    {
+        /* enter news list view */
+        PiaNewsViewController* newsVC = [[PiaNewsViewController alloc] init];
+        PiaNavController* navController = [[PiaNavController alloc] initWithRootViewController:newsVC];
+        [self.navigationController presentViewController:navController animated:YES completion:nil];
+    }
+    else
+    {
+        NSArray* arrayNews = [[NSUserDefaults standardUserDefaults] objectForKey:@"PiaxStudioNewsList"];
+        if (arrayNews && [arrayNews count] > 0)
+        {
+            for (NSDictionary* dictNews in arrayNews)
+            {
+                NSInteger nId = [[dictNews objectForKey:@"id"] intValue];
+                if (nId == nTag)
+                {
+                    PiaNewsViewController* newsVC = [[PiaNewsViewController alloc] init];
+                    PiaNavController* navController = [[PiaNavController alloc] initWithRootViewController:newsVC];
+                    PiaNewsDetailViewController* detailVC = [[PiaNewsDetailViewController alloc] init];
+                    [detailVC prepareNewsDetailViewWithData:dictNews];
+                    [navController pushViewController:detailVC animated:NO];
+                    [self.navigationController presentViewController:navController animated:YES completion:nil];
+                    
+                    break;
+                }
+            }
+        }
+    }
 }
 
 @end
