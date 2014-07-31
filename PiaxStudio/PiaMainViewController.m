@@ -182,7 +182,8 @@
     {
         NSInteger nIndex = 0;
         NSDictionary* dictNews = [arrayNews objectAtIndex:nIndex];
-        while (nIndex < 5)
+        NSInteger nMaxShownTitles = 5;
+        while (nIndex < nMaxShownTitles)
         {
             if (dictNews)
             {
@@ -205,8 +206,21 @@
         }
         
         /* "more?" */
-        NSDictionary* dictMoreNewsTitleId = [NSDictionary dictionaryWithObjectsAndKeys:@"更多?", @"title", @"9999", @"id", nil];
-        [arrayNewsTitles addObject:dictMoreNewsTitleId];
+        if ([arrayNews count] > nMaxShownTitles)
+        {
+            NSDictionary* dictMoreNewsTitleId = [NSDictionary dictionaryWithObjectsAndKeys:@"更多?", @"title", @"9999", @"id", nil];
+            [arrayNewsTitles addObject:dictMoreNewsTitleId];
+        }
+        
+        /* hack: add the first title at the bottom to smooth the auto-scroll */
+        dictNews = [arrayNews objectAtIndex:0];
+        NSString* stringTitle = [dictNews objectForKey:@"title"];
+        NSString* stringId = [dictNews objectForKey:@"id"];
+        if (stringTitle && ![stringTitle isEqualToString:@""] && stringId && ![stringId isEqualToString:@""])
+        {
+            NSDictionary* dictNewsTitleId = [NSDictionary dictionaryWithObjectsAndKeys:stringTitle, @"title", stringId, @"id", nil];
+            [arrayNewsTitles addObject:dictNewsTitleId];
+        }
     }
     else
     {
@@ -292,7 +306,8 @@
     {
         /* last one, scroll to top */
         CGPoint fOffset = CGPointMake(0.0f, 0.0f);
-        [self.newsTitleScroll setContentOffset:fOffset animated:YES];
+        [self.newsTitleScroll setContentOffset:fOffset animated:NO];
+        [self _autoScrollNewsTitle];
     }
     else
     {
