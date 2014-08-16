@@ -16,6 +16,8 @@
 
 /* UI elements */
 @property (strong) UIScrollView* newsTitleScroll;
+@property (strong) UIButton* btnPia;
+@property (strong) UIButton* btnYoutube;
 
 /* controls */
 @property (strong) NSTimer* newsTitleTimer;
@@ -64,7 +66,44 @@
     imageBg.image = [UIImage imageNamed:stringBgFilename];
     
     
+    CGFloat fBtnPiaSize = 60.0f;
+    if (!self.btnPia)
+    {
+        self.btnPia = [[UIButton alloc] initWithFrame:CGRectMake(-30.0f, 180.0f, fBtnPiaSize, fBtnPiaSize)];
+        [self.view addSubview:self.btnPia];
+        
+        [self.btnPia setBackgroundColor:[UICommonUtility hexToColor:0x48A7AA withAlpha:[NSNumber numberWithFloat:1.0f]]];
+        [self.btnPia.layer setCornerRadius:fBtnPiaSize/2];
+        
+        [self.btnPia addTarget:self action:@selector(btnPiaClicked:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UILabel* labelBigP = [[UILabel alloc] initWithFrame:CGRectZero];
+        [self.btnPia addSubview:labelBigP];
+        [labelBigP setBackgroundColor:[UIColor clearColor]];
+        [labelBigP setFont:[UIFont fontWithName:@"Optima-ExtraBlack" size:50.0f]];
+        [labelBigP setTextColor:[UIColor whiteColor]];
+        [labelBigP setText:@"P"];
+        [labelBigP sizeToFit];
+        
+        CGRect frame = labelBigP.frame;
+        frame.origin.x = (fBtnPiaSize - frame.size.width)/2.0f;
+        frame.origin.y = (fBtnPiaSize - frame.size.height)/2.0f;
+        labelBigP.frame = frame;
+    }
+    
+    
+    CGFloat fModuleButtonSize = 50.0f;
+    if (!self.btnYoutube)
+    {
+        self.btnYoutube = [[UIButton alloc] initWithFrame:CGRectMake(60.0f, 140.0f, fModuleButtonSize, fModuleButtonSize)];
+        [self.view addSubview:self.btnYoutube];
+        
+        [self.btnYoutube setImage:[UIImage imageNamed:@"main_yt.png"] forState:UIControlStateNormal];
+        [self.btnYoutube setImage:[UIImage imageNamed:@"main_yt.png"] forState:UIControlStateHighlighted];
+    }
+    
     /* main function buttons */
+    /*
     CGFloat fMainBtnMarginLeft = 20.0f, fMainBtnMarginTop = 130.0f, fMainBtnMarginGap = 10.0f;
     CGFloat fMainBtnWidth = 88.0f, fMainBtnHeight = 44.0f;
     CGFloat fMainBtnCornerRadius = 5.0f;
@@ -112,7 +151,7 @@
     [buttonGallery setBackgroundColor:[UICommonUtility hexToColor:0x48A7AA withAlpha:[NSNumber numberWithFloat:1.0f]]];
     [buttonGallery.layer setCornerRadius:fMainBtnCornerRadius];
     [buttonGallery setAlpha:0.8f];
-    
+     
     UILabel* labelGallery = [[UILabel alloc] initWithFrame:CGRectZero];
     [buttonGallery addSubview:labelGallery];
     [labelGallery setBackgroundColor:[UIColor clearColor]];
@@ -144,6 +183,7 @@
     frame.origin.x = (fMainBtnWidth - frame.size.width)/2.0f;
     frame.origin.y = (fMainBtnHeight - frame.size.height)/2.0f;
     labelYoutube.frame = frame;
+     */
     
     
     /* news section */
@@ -164,7 +204,7 @@
     [labelBigN setText:@"N"];
     [labelBigN sizeToFit];
     
-    frame = labelBigN.frame;
+    CGRect frame = labelBigN.frame;
     frame.origin.x = (fNewsBaseBtnSize - frame.size.width)/2.0f;
     frame.origin.y = (fNewsBaseBtnSize - frame.size.height)/2.0f;
     labelBigN.frame = frame;
@@ -365,6 +405,19 @@
             }
         }
     }
+}
+
+- (IBAction)btnPiaClicked:(id)sender
+{
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        CGRect frame = self.btnPia.frame;
+        frame.origin.x = (frame.origin.x <= -30)? -10 : -30;
+        self.btnPia.frame = frame;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 @end
